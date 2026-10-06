@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Snake Arena | Ekakshar Tiwari</title>
+  <meta name="description"
+    content="Snake Arena: three game modes, combos, power-ups, achievements and a leaderboard. Built with plain HTML, CSS and JavaScript.">
+  <meta property="og:title" content="Snake Arena">
+  <meta property="og:description" content="Can you beat my score? A Snake game with modes, combos and power-ups.">
+  <meta name="theme-color" content="#0b0e1f">
+  <link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+  <nav class="bar">
+    <span>Built by <b>Ekakshar Tiwari</b></span>
+    <span class="links"><a class="hire" href="mailto:ekakshartiwari@gmail.com">Hire me</a><a
+        href="https://www.instagram.com/code_crafter_6912/" target="_blank"
+        rel="noopener noreferrer">Instagram</a></span>
+  </nav>
+
+  <main class="app">
+    <section class="game">
+      <header class="hud">
+        <h1>Snake <i>Arena</i></h1>
+        <div class="stats">
+          <span>Score <b id="score">0</b></span><span>Best <b id="best">0</b></span><span>Level <b
+              id="level">1</b></span>
+          <span id="timeBox" hidden>Time <b id="time">60</b></span>
+        </div>
+        <div class="btns"><button id="pauseBtn" type="button">Pause</button><button id="soundBtn" type="button"
+            aria-pressed="true">Sound on</button></div>
+      </header>
+      <div class="fx" id="fx"></div>
+      <div class="board">
+        <canvas id="canvas" aria-label="Snake game board"></canvas>
+        <div id="overlay" class="overlay">
+          <h2 id="oTitle">Snake Arena</h2>
+          <p id="oSub"></p>
+          <div class="modes" id="modes">
+            <button type="button" data-mode="classic">Classic</button><button type="button"
+              data-mode="walls">Walls</button><button type="button" data-mode="time">Time Attack</button>
+          </div>
+          <p id="modeInfo" class="info"></p>
+          <button id="playBtn" class="primary" type="button">Play</button>
+          <button id="shareBtn" type="button" hidden>Share score</button>
+        </div>
+      </div>
+      <div class="dpad">
+        <button type="button" data-d="up" aria-label="Up">▲</button><button type="button" data-d="left"
+          aria-label="Left">◀</button>
+        <button type="button" data-d="down" aria-label="Down">▼</button><button type="button" data-d="right"
+          aria-label="Right">▶</button>
+      </div>
+      <p class="hint">Arrow keys or WASD · Space to pause · Swipe or D-pad on touch</p>
+    </section>
+
+    <aside class="side">
+      <h2>Leaderboard <small id="lbMode"></small></h2>
+      <label class="who">Playing as <input id="who" maxlength="12" placeholder="Your name" autocomplete="off"></label>
+      <ol id="lb"></ol>
+      <h3>Achievements</h3>
+      <ul id="ach"></ul>
+    </aside>
+  </main>
+
+  <section class="about">
+    <h2>How it was built</h2>
+    <p>Plain HTML, CSS and JavaScript, with no frameworks and no build step. A canvas renderer with smooth interpolated
+      movement, a fixed-timestep game loop, sound effects synthesized with the Web Audio API, and localStorage for
+      scores and achievements.</p>
+  </section>
+  <div id="toasts"></div>
+
+  <script src="render.js"></script><!-- canvas, ctx, draw(), burst(), pop() -->
+  <script src="game.js"></script> <!-- state, modes, power-ups, loop, sound, storage -->
+  <script src="input.js"></script> <!-- keyboard, swipe, D-pad and button listeners -->
+</body>
+
+</html>
